@@ -12,9 +12,21 @@ namespace FourthWall.Server.Controllers
             return new HtmlResponse(@"<html>
 <head>
 <title>Home</title>
+<style>
+.image {
+    background-image: url('/Media/Random');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    width: 100%; 
+    height: 100%;     
+}
+</style>
 </head>
 <body>
-<div style=""width: 100%; height: 100%; background-image: url('/Media/Random'); background-size: cover;"">
+<div class=""image"">
     &nbsp;
 </div>
 </body>
