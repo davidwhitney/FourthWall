@@ -11,11 +11,7 @@ namespace FourthWall.Server
         public void Configuration(IAppBuilder appBuilder)
         {
             var config = new HttpConfiguration();
-
-            config.Routes.MapHttpRoute("Home", "", new { controller = "Home", action = "index"}, new {});
-            config.Routes.MapHttpRoute("Content", "Content/{*path}", new { controller = "Content", action = "index"}, new {});
-            config.Routes.MapHttpRoute("Default", "{controller}/{action}", new { controller = "Home", action = "index"}, new {});
-
+            Routes.Register(config.Routes);
             appBuilder.UseWebApi(config);
         }
     }
