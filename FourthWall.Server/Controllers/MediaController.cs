@@ -1,28 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using FourthWall.Server.MediaSources;
-using FourthWall.Server.MediaSources.Upsplash;
 
 namespace FourthWall.Server.Controllers
 {
     public class MediaController : ApiController
     {
-        private readonly IMediaSource _mediaSource;
+        private readonly IEnumerable<IMediaSource> _sources;
 
-        public MediaController()
+        public MediaController(IEnumerable<IMediaSource> sources)
         {
-            _mediaSource = new UpsplashMediaSource();
+            _sources = sources;
         }
 
         [HttpGet]
         public HttpResponseMessage Random()
         {
-            var candidates = _mediaSource.List();
+            var candidates = _sources.First().List();
             var random = candidates.OrderBy(x => Guid.NewGuid()).First();
-            var bytes = _mediaSource.FetchBytes(random);
+            var bytes = _sources.First().FetchBytes(random);
 
             return new HttpResponseMessage(HttpStatusCode.OK)
             {

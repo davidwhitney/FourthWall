@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Web.Http;
 using FourthWall.Server.HttpResponses;
 
@@ -9,11 +6,6 @@ namespace FourthWall.Server.Controllers
 {
     public class HomeController : ApiController
     {
-        public HomeController()
-        {
-            
-        }
-
         [HttpGet]
         public HttpResponseMessage Index()
         {
