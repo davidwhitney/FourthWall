@@ -13,7 +13,11 @@ namespace FourthWall.Server.Controllers
 <head>
 <title>Home</title>
 </head>
-<body><img src=""/Media/Random"" style=""width: 100%;"" /></body>
+<body>
+<div style=""width: 100%; height: 100%; background-image: url('/Media/Random'); background-size: cover;"">
+    &nbsp;
+</div>
+</body>
 </html>
 ");
         }

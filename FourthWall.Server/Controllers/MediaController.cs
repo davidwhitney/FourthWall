@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using FourthWall.Server.HttpResponses;
 using FourthWall.Server.MediaSources;
 
 namespace FourthWall.Server.Controllers
@@ -24,10 +24,7 @@ namespace FourthWall.Server.Controllers
             var randomImage = candidates.Random();
             var bytes = mediaSource.FetchBytes(randomImage);
 
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(bytes)
-            };
+            return new RawResponse(bytes);
         }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
 namespace FourthWall.Server.Test.Unit.Controllers
 {
-    class HomeControllerTests
+    public class HomeControllerTests : InMemoryTest
     {
+        [Test]
+        public void GetRoot_ReturnPageWithLinkToRandomImage()
+        {
+            var page = HttpClient.GetAsync("/").Result.Content.ReadAsStringAsync().Result;
+
+            Assert.That(page, Does.Contain("('/Media/Random')"));
+        }
     }
 }

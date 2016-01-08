@@ -89,6 +89,7 @@
     <Compile Include="HttpResponses\FileFromDiskResponse.cs" />
     <Compile Include="HttpResponses\HtmlResponse.cs" />
     <Compile Include="HttpResponses\NotFoundResponse.cs" />
+    <Compile Include="HttpResponses\RawResponse.cs" />
     <Compile Include="HttpResponses\RazorResponse.cs" />
     <Compile Include="MediaSources\IMediaSource.cs" />
     <Compile Include="MediaSources\Upsplash\UpsplashMediaSource.cs" />
