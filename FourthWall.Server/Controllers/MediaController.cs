@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -20,9 +18,11 @@ namespace FourthWall.Server.Controllers
         [HttpGet]
         public HttpResponseMessage Random()
         {
-            var candidates = _sources.First().List();
-            var random = candidates.OrderBy(x => Guid.NewGuid()).First();
-            var bytes = _sources.First().FetchBytes(random);
+            var mediaSource = _sources.Random();
+
+            var candidates = mediaSource.List();
+            var randomImage = candidates.Random();
+            var bytes = mediaSource.FetchBytes(randomImage);
 
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
