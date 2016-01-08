@@ -24,9 +24,9 @@ namespace FourthWall.Wpf
         {
             InitializeComponent();
 
-            browser.MouseUp += Browser_MouseUp;
-            browser.KeyDown += Browser_KeyDown;
-            browser.Navigate(App.Server.BaseUrl);
+            Browser.MouseUp += Browser_MouseUp;
+            Browser.KeyDown += Browser_KeyDown;
+            Browser.Navigate(App.Server.BaseUrl);
         }
 
         private void Browser_KeyDown(object sender, KeyEventArgs e)

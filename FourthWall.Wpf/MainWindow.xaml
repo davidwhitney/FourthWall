@@ -15,6 +15,6 @@
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
-        <WebBrowser x:Name="browser" Margin="0"></WebBrowser>
+        <WebBrowser x:Name="Browser" Margin="0"></WebBrowser>
     </Grid>
 </Window>

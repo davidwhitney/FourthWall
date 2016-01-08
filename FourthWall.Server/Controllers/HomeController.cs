@@ -13,6 +13,9 @@ namespace FourthWall.Server.Controllers
 <head>
 <title>Home</title>
 <style>
+body {
+    overflow: hidden;
+}
 .image {
     background-image: url('/Media/Random');
     background-size: cover;
