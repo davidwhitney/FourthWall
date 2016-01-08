@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using Microsoft.Owin.Hosting;
 using NUnit.Framework;
 
 namespace FourthWall.Server.Test.Unit
