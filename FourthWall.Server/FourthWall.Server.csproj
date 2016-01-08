@@ -77,8 +77,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="EmbeddedWebServer.cs" />
+    <Compile Include="HttpResponses\FileFromDiskResponse.cs" />
+    <Compile Include="HttpResponses\HtmlResponse.cs" />
+    <Compile Include="HttpResponses\NotFoundResponse.cs" />
+    <Compile Include="HttpResponses\RazorResponse.cs" />
     <Compile Include="MediaSources\IMediaSource.cs" />
-    <Compile Include="MediaSources\Unsplash\UpsplashMediaSource.cs" />
+    <Compile Include="MediaSources\Upsplash\UpsplashMediaSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

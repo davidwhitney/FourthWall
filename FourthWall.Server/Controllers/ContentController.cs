@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using FourthWall.Server.HttpResponses;
 
 namespace FourthWall.Server.Controllers
 {
@@ -15,13 +16,10 @@ namespace FourthWall.Server.Controllers
 
             if (!File.Exists(fullPath))
             {
-                return new HttpResponseMessage(HttpStatusCode.NotFound);
+                return new NotFoundResponse();
             }
 
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(File.ReadAllBytes(fullPath))
-            };
+            return new FileFromDiskResponse(fullPath);
         }
     }
 }

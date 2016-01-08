@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using FourthWall.Server.MediaSources;
-using FourthWall.Server.MediaSources.Unsplash;
+using FourthWall.Server.MediaSources.Upsplash;
 
 namespace FourthWall.Server.Controllers
 {

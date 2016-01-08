@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using FourthWall.Server.HttpResponses;
 
 namespace FourthWall.Server.Controllers
 {
@@ -16,18 +17,13 @@ namespace FourthWall.Server.Controllers
         [HttpGet]
         public HttpResponseMessage Index()
         {
-            var msg = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(@"
-<html><head>
+            return new HtmlResponse(@"<html>
+<head>
 <title>Home</title>
 </head>
 <body><img src=""/Media/Random"" style=""width: 100%;"" /></body>
 </html>
-", Encoding.UTF8, "text/html")
-            };
-
-            return msg;
+");
         }
     }
 }
