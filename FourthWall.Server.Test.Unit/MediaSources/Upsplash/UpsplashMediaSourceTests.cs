@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace FourthWall.Server.Test.Unit.MediaSources.Upsplash
 {
-    class UpsplashMediaSourceTests
+    [TestFixture]
+    public class UpsplashMediaSourceTests
     {
     }
 }

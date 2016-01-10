@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web.Http;
 using FourthWall.Server.Extensions;
 using FourthWall.Server.HttpResponses;
