@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using Microsoft.Owin.Hosting;
+using Ninject;
 
 namespace FourthWall.Server
 {
@@ -10,10 +11,11 @@ namespace FourthWall.Server
         public string BaseUrl { get; }
         private readonly IDisposable _app;
 
-        public EmbeddedWebServer()
+        public EmbeddedWebServer(IKernel container)
         {
             var port = FreeTcpPort();
             BaseUrl = "http://localhost:" + port;
+            Startup.Container = container;
             _app = WebApp.Start<Startup>(BaseUrl);
         }
 

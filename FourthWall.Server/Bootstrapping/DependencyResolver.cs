@@ -5,13 +5,13 @@ using System.Web.Http.Dependencies;
 using Ninject;
 using Ninject.Activation.Blocks;
 
-namespace FourthWall.Server
+namespace FourthWall.Server.Bootstrapping
 {
     public class DependencyResolver : IDependencyResolver
     {
-        private readonly StandardKernel _container;
+        private readonly IKernel _container;
 
-        public DependencyResolver(StandardKernel container)
+        public DependencyResolver(IKernel container)
         {
             _container = container;
         }

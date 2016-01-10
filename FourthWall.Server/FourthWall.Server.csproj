@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapping\ContainerBuilder.cs" />
     <Compile Include="Extensions\CollectionExtension.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -104,9 +105,10 @@
     <Compile Include="MediaSources\MediaSourceList.cs" />
     <Compile Include="MediaSources\Upsplash\UpsplashMediaSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Routes.cs" />
+    <Compile Include="Bootstrapping\Routes.cs" />
+    <Compile Include="ServerConfiguration.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Bootstrapping\DependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

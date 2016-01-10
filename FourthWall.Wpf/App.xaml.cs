@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using FourthWall.Server;
+using FourthWall.Server.Bootstrapping;
+using Ninject;
 
 namespace FourthWall.Wpf
 {
@@ -8,11 +10,13 @@ namespace FourthWall.Wpf
     /// </summary>
     public partial class App : Application
     {
+        public IKernel Container { get; set; }
         public static EmbeddedWebServer Server { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            Server = new EmbeddedWebServer();
+            Container = ContainerBuilder.CreateContainer();
+            Server = new EmbeddedWebServer(Container);
         }
 
         protected override void OnExit(ExitEventArgs e)

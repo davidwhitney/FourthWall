@@ -25,12 +25,12 @@ namespace FourthWall.Server.MediaSources
                 
             }
 
-            throw new NotImplementedException();
+            return _inner.List();
         }
 
         public byte[] FetchBytes(string image)
         {
-            throw new NotImplementedException();
+            return _inner.FetchBytes(image);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Web.Http;
 
-namespace FourthWall.Server
+namespace FourthWall.Server.Bootstrapping
 {
     public class Routes
     {
