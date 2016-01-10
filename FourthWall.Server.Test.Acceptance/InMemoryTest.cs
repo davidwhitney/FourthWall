@@ -12,8 +12,8 @@ namespace FourthWall.Server.Test.Acceptance
         private EmbeddedWebServer _server;
         private IKernel _container;
         private Fixture _af;
-        public string BaseUrl => _server.BaseUrl;
-        public TestClient Http { get; set; }
+
+        protected TestClient Http { get; private set; }
 
         [SetUp]
         public void SetUp()
@@ -21,7 +21,7 @@ namespace FourthWall.Server.Test.Acceptance
             _af = new Fixture();
             _container = ContainerBuilder.CreateContainer();
             _server = new EmbeddedWebServer(_container);
-            Http = new TestClient(BaseUrl);
+            Http = new TestClient(_server.BaseUrl);
         }
 
         [TearDown]
@@ -30,7 +30,7 @@ namespace FourthWall.Server.Test.Acceptance
             _server.Dispose();
         }
 
-        public Mock<T> Mock<T>() where T : class
+        protected Mock<T> Mock<T>() where T : class
         {
             var dep = _af.Freeze<Mock<T>>();
             _container.Rebind<T>().ToMethod(x => dep.Object);

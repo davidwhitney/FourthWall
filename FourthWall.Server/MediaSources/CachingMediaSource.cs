@@ -1,22 +1,30 @@
 ﻿using System.Collections.Generic;
-using System.IO;
+using System.IO.Abstractions;
 
 namespace FourthWall.Server.MediaSources
 {
     public class CachingMediaSource : IMediaSource
     {
-        private readonly IMediaSource _inner;
+        private IMediaSource _inner;
+        private readonly ServerConfiguration _configuration;
+        private readonly IFileSystem _fs;
 
-        public CachingMediaSource(IMediaSource inner)
+        public CachingMediaSource(ServerConfiguration configuration, IFileSystem fs)
+        {
+            _configuration = configuration;
+            _fs = fs;
+        }
+
+        public CachingMediaSource WithSource(IMediaSource inner)
         {
             _inner = inner;
+            return this;
         }
 
         public List<string> List()
         {
-            var cachePath = @"C:\Dev\FourthWall\FourthWall.Server\MediaSourceCache";
             var cacheKey = _inner.GetType().Name;
-            if (File.Exists(Path.Combine(cachePath, cacheKey)))
+            if (_fs.File.Exists(_fs.Path.Combine(_configuration.TemporaryStoragePath, cacheKey)))
             {
                 
             }
