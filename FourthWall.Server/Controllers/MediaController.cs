@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
+using FourthWall.Server.Extensions;
 using FourthWall.Server.HttpResponses;
 using FourthWall.Server.MediaSources;
 
@@ -8,9 +9,9 @@ namespace FourthWall.Server.Controllers
 {
     public class MediaController : ApiController
     {
-        private readonly IEnumerable<IMediaSource> _sources;
+        private readonly MediaSourceList _sources;
 
-        public MediaController(IEnumerable<IMediaSource> sources)
+        public MediaController(MediaSourceList sources)
         {
             _sources = sources;
         }

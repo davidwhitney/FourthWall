@@ -1,5 +1,10 @@
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Web.Http;
 using FourthWall.Server;
+using FourthWall.Server.Controllers;
+using FourthWall.Server.MediaSources;
 using Microsoft.Owin;
 using Ninject;
 using Ninject.Extensions.Conventions;
@@ -14,8 +19,7 @@ namespace FourthWall.Server
 
         public void Configuration(IAppBuilder appBuilder)
         {
-            Container = new StandardKernel();
-            Container.Bind(x => x.FromAssemblyContaining<Startup>().SelectAllClasses().BindAllInterfaces());
+            CreateContainer();
 
             var config = new HttpConfiguration
             {
@@ -24,6 +28,28 @@ namespace FourthWall.Server
 
             Routes.Register(config.Routes);
             appBuilder.UseWebApi(config);
+        }
+
+        private static void CreateContainer()
+        {
+            Container = new StandardKernel();
+            Container.Bind(x => x.FromAssemblyContaining<Startup>().SelectAllClasses().BindToSelf());
+            Container.Bind(x =>
+            {
+                x.FromAssemblyContaining<Startup>()
+                    .SelectAllClasses()
+                    .Excluding<CachingMediaSource>()
+                    .BindAllInterfaces();
+            });
+
+            Container.Rebind<MediaSourceList>()
+                .ToMethod(x =>
+                {
+                    var mediaSources = x.Kernel.GetAll<IMediaSource>();
+                    var sources = new MediaSourceList();
+                    sources.AddRange(mediaSources.Select(s => new CachingMediaSource(s)));
+                    return sources; 
+                });
         }
     }
 }
